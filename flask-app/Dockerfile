@@ -1,5 +1,5 @@
-#Use Python 3.6 as a base image
-FROM python:3.6
+#Use Python 3.10 as a base image
+FROM python:3.10
 # Copy contents into image
 WORKDIR /dfe_project/flask-app/
 COPY app.py /flask-app/
