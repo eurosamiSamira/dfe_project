@@ -5,7 +5,7 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 
 # Replace [PASSWORD] with the root password for your mysql container
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@sqldb_container:3306/flask-db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@sqldb_container:3306/flask-db'
 
 class Users(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -17,8 +17,8 @@ class Users(db.Model):
 
 @app.route('/')
 def hello():
-  data1 = Users.query.all()
-  return render_template('home.html', data1=data1)
+  # data1 = Users.query.all()
+  return render_template('home.html') #, data1=data1)
 
 if __name__=='__main__':
   app.run(host='0.0.0.0', port=5000, debug=True)
