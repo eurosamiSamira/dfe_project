@@ -1,7 +1,7 @@
 #Use Python 3.6 as a base image
 FROM python:3.6
 # Copy contents into image
-WORKDIR /trio-task/flask-app/
+WORKDIR /dfe_project/flask-app/
 COPY app.py /flask-app/
 COPY templates /flask-app/templates/
 # install pip dependencies from requirements file
