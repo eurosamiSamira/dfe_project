@@ -31,6 +31,15 @@ def create_exercise():
     return render_template('add_exercise.html', form=form)
 
 
+@app.route('/delete/<id>')
+def delete(id):
+    entry = Exercises.query.get(id)
+    db.session.delete(entry)
+    db.session.commit()
+
+    return redirect(url_for('show_home'))
+
+
 @app.route('/update/<id>', methods=['GET', 'POST'])
 def update_exercise(id):
     if request.method == 'POST':
@@ -50,5 +59,4 @@ def update_exercise(id):
         form.reps.data = entry.reps
 
         return render_template('update_exercise.html', form=form)
-
 
