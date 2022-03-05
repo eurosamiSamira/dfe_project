@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div><a href="/">&lt; Home</a></div>
+<div><b>{{ workout.name }} Workout</b> - <a href="/editset/{{ workout.id }}">edit set</a> </div>
+
+    {% if current_exercises|length > 0 %}
+        <ul>
+            {% for item in current_exercises %}
+            <li>{{ item.exercise }} {{ item.reps }} 
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No exercises defined yet!</p>
+
+    {% endif %}
+
+{% endblock body %}

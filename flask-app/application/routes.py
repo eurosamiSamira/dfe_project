@@ -1,6 +1,6 @@
 from random import sample
 from application import app, db
-from application.models import Exercises
+from application.models import Exercises, WorkoutSet, Relationship
 from application.forms import ExerciseForm
 from flask import render_template, redirect, url_for, request
 
@@ -8,11 +8,12 @@ from flask import render_template, redirect, url_for, request
 # EXERCISES
 @app.route('/', methods=['GET'])
 def show_home():
+    workouts = WorkoutSet.query.all()
     exercises = Exercises.query.all()
     if not exercises:
         exercises = []
 
-    return render_template('home.html', exercises=exercises)
+    return render_template('home.html', workouts=workouts, exercises=exercises)
 
 
 @app.route('/create/exercise', methods=['GET', 'POST'])
@@ -33,6 +34,11 @@ def create_exercise():
 
 @app.route('/delete/<id>')
 def delete(id):
+    relationships = Relationship.query.filter_by(fk_exercise=id).all()
+    for entry in relationships:
+        db.session.delete(entry)
+        db.session.commit()
+
     entry = Exercises.query.get(id)
     db.session.delete(entry)
     db.session.commit()
@@ -60,3 +66,49 @@ def update_exercise(id):
 
         return render_template('update_exercise.html', form=form)
 
+
+# WORKOUTS
+@app.route('/viewset/<workout_id>')
+def view_set(workout_id):
+    workout = WorkoutSet.query.get(workout_id)
+    exercises = []
+    relationships = Relationship.query.filter_by(fk_workout=workout_id).all()
+    for relationship in relationships:
+        exercise = Exercises.query.get(relationship.fk_exercise)
+        exercises.append(exercise)
+
+    return render_template('view_workout.html', current_exercises=exercises, workout=workout)
+
+
+@app.route('/editset/<workout_id>', methods=['GET', 'POST'])
+def edit_set(workout_id):
+    id = workout_id
+    if request.method == 'POST':
+        id = request.form.get('workout_id')  # get posted workout id
+
+        # clean up existing registered entries in relationship table
+        relationships = Relationship.query.filter_by(fk_workout=id).all()
+        if relationships is not None:
+            for entry in relationships:
+                if int(entry.fk_workout) == int(id):
+                    db.session.delete(entry)
+                    db.session.commit()
+
+        # insert posted keys
+        for key in request.form.keys():
+            try:
+                if float(key) >= 0:
+                    store = Relationship(
+                        fk_exercise=int(key), fk_workout=int(id))
+                    db.session.add(store)
+                    db.session.commit()
+
+            except ValueError:
+                pass
+
+        return redirect(url_for('view_set', workout_id=id))
+
+    workout = WorkoutSet.query.get(workout_id)
+    all = Exercises.query.all()
+
+    return render_template('update_workout.html', available_exercises=all, workout=workout)
