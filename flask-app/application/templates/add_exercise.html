@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div><a href="/">&lt; Home</a></div>
+<div><b>Create exercise</b></div>
+<form method="POST" action="">
+    {{ form.exercise.label }} {{ form.exercise }}<br>
+    {{ form.reps.label }} {{ form.reps }}<br>
+    {{ form.submit }}
+</form>
+
+{% endblock body %}
