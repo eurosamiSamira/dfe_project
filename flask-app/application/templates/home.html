@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+
+ <h1>Welcome to Blaster Gym :)</h1>
+
+ <div style="display: flex; flex-direction: row;">
+   <div style="flex: 1">
+      <h3>Exercise menu</h3>
+      <a href="/create/exercise">create exercise</a>
+
+      {% if exercises|length > 0 %}
+      <ul>
+      {% for exercise in exercises %}
+         <li>
+            {{ exercise.exercise }} - reps: {{ exercise.reps }}<br>
+
+      {% endfor %}
+      </ul>
+
+      {% else %}
+         <p>No exercises defined yet!</p>
+
+      {% endif %}
+   </div>
+
+   <div style="flex: 1">
+
+   </div>
+</div>
+
+{% endblock body %}
