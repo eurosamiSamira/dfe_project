@@ -8,6 +8,15 @@
         <ul>
             {% for item in current_exercises %}
             <li>{{ item.exercise }} {{ item.reps }} 
+                {% if item.completed %}
+                    <span style="background: green;">
+                        <a href="/incomplete/{{ workout.id }}/{{ item.id }}" style="color: white;">done!</a>
+                    </span>
+                {% else %}
+                    <span style="background: red;">
+                        <a href="/complete/{{ workout.id }}/{{ item.id }}" style="color: white;">incomplete :(</a>
+                    </span>
+                {% endif %}
             {% endfor %}
         </ul>
 
