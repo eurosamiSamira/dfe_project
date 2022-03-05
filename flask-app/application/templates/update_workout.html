@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div><a href="/">&lt; Home</a></div>
+<div><b>Edit {{ workout.name }} workout</b></div>
+
+<form method="POST" action="">
+    <p>available exercises - <a href="/randomise/{{ workout.id }}">randomise for me</a></p>
+    <input type="hidden" name="workout_id" value="{{ workout.id }}" />
+
+    {% for item in available_exercises %}
+    <p><input type="checkbox" name="{{ item.id }}"}> {{ item.exercise }} {{item.reps}}</p>
+    {% endfor %}
+
+    <input type="submit" value="send" />
+</form>
+
+{% endblock body %}

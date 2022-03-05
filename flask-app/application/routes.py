@@ -128,3 +128,38 @@ def edit_set(workout_id):
     all = Exercises.query.all()
 
     return render_template('update_workout.html', available_exercises=all, workout=workout)
+
+
+@app.route('/randomise/<workout_id>')
+def randomise(workout_id):
+    # clean up existing registered entries in relationship table
+    relationships = Relationship.query.filter_by(fk_workout=workout_id).all()
+    if relationships is not None:
+        for entry in relationships:
+            db.session.delete(entry)
+            db.session.commit()
+
+    exercises = Exercises.query.all()
+    total = 0
+
+    match int(workout_id):
+        case 1:
+            total = min(3, len(exercises))
+
+        case 2:
+            total = min(5, len(exercises))
+
+        case 3:
+            total = min(7, len(exercises))
+
+        case 4:
+            total = min(10, len(exercises))
+
+    exercises = sample(population=exercises, k=total)
+    for exercise in exercises:
+        store = Relationship(fk_exercise=exercise.id,
+                             fk_workout=int(workout_id))
+        db.session.add(store)
+        db.session.commit()
+
+    return redirect(url_for('view_set', workout_id=workout_id))
