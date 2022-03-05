@@ -29,3 +29,26 @@ def create_exercise():
         return redirect(url_for('show_home'))
 
     return render_template('add_exercise.html', form=form)
+
+
+@app.route('/update/<id>', methods=['GET', 'POST'])
+def update_exercise(id):
+    if request.method == 'POST':
+        form = ExerciseForm()
+        entry = Exercises.query.get(id)
+
+        entry.exercise = form.exercise.data
+        entry.reps = form.reps.data
+        db.session.commit()
+
+        return redirect(url_for('show_home'))
+
+    else:
+        entry = Exercises.query.get(id)
+        form = ExerciseForm()
+        form.exercise.data = entry.exercise
+        form.reps.data = entry.reps
+
+        return render_template('update_exercise.html', form=form)
+
+
