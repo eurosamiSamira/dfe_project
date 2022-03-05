@@ -67,6 +67,22 @@ def update_exercise(id):
         return render_template('update_exercise.html', form=form)
 
 
+@app.route('/complete/<workout_id>/<id>', methods=['GET'])
+def complete(workout_id, id):
+    entry = Exercises.query.get(id)
+    entry.completed = True
+    db.session.commit()
+    return redirect(url_for('view_set', workout_id=workout_id))
+
+
+@app.route('/incomplete/<workout_id>/<id>', methods=['GET'])
+def incomplete(workout_id, id):
+    entry = Exercises.query.get(id)
+    entry.completed = False
+    db.session.commit()
+    return redirect(url_for('view_set', workout_id=workout_id))
+
+
 # WORKOUTS
 @app.route('/viewset/<workout_id>')
 def view_set(workout_id):
