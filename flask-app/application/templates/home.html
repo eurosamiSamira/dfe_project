@@ -13,6 +13,7 @@
       {% for exercise in exercises %}
          <li>
             {{ exercise.exercise }} - reps: {{ exercise.reps }}<br>
+            <a href="/update/{{ exercise.id }}">update</a>
             <a href="/delete/{{ exercise.id }}">delete</a><br>&nbsp;
       {% endfor %}
       </ul>
@@ -24,7 +25,12 @@
    </div>
 
    <div style="flex: 1">
-
+      <h3>Today's workouts</h3>
+      <ul>
+      {% for workout in workouts %}
+         <li><a href="/viewset/{{ workout.id }}">{{ workout.name }}</a>
+      {% endfor %}
+      </ul>
    </div>
 </div>
 
