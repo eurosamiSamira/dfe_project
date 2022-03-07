@@ -1,19 +1,26 @@
-version: "3.8"
+version: "3"
 services:
   flask_container:
     build: ./flask-app
+    container_name: flask_container
+    networks:
+      - trio
     ports:
       - target: 5000
-        protocol: tcp
 
   db_container:
     build: ./db
+    container_name: db_container
+    networks:
+      - trio
     ports:
       - target: 3306
-        protocol: tcp
 
   nginx:
-    image: nginx
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      - trio
     ports:
       - target: 80
         published: 80
@@ -22,3 +29,6 @@ services:
       - type: bind
         source: ./nginx/nginx.conf
         target: /etc/nginx/nginx.conf
+
+networks:
+  trio: {}
