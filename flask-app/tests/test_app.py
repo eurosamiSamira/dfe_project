@@ -168,18 +168,18 @@ class TestCreate(TestBase):
         self.assertIn('Arms', str(response.data))
         self.assertIn('30', str(response.data))
 
-    # def test_randomise(self):
-    #     create_exercise()  # added 'Legs' to DB
-    #     create_relationship()
+    def test_randomise(self):
+        create_exercise()  # added 'Legs' to DB
+        create_relationship()
 
-    #     response = self.client.get(
-    #         url_for('randomise', workout_id=1),
-    #         follow_redirects=True,
-    #     )
-    #     self.assertIn('Short 10', str(response.data))
+        response = self.client.get(
+            url_for('randomise', workout_id=1),
+            follow_redirects=True,
+        )
+        self.assertIn('Short 10', str(response.data))
 
-    #     response = self.client.get(
-    #         url_for('randomise', workout_id=2),
-    #         follow_redirects=True,
-    #     )
-    #     self.assertIn('Medium 20', str(response.data))
+        response = self.client.get(
+            url_for('randomise', workout_id=2),
+            follow_redirects=True,
+        )
+        self.assertIn('Medium 20', str(response.data))

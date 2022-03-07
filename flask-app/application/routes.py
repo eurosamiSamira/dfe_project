@@ -142,18 +142,14 @@ def randomise(workout_id):
     exercises = Exercises.query.all()
     total = 0
 
-    match int(workout_id):
-        case 1:
-            total = min(3, len(exercises))
-
-        case 2:
-            total = min(5, len(exercises))
-
-        case 3:
-            total = min(7, len(exercises))
-
-        case 4:
-            total = min(10, len(exercises))
+    if int(workout_id) == 1:
+        total = min(3, len(exercises))
+    elif int(workout_id) == 2:
+        total = min(5, len(exercises))
+    elif int(workout_id) == 3:
+        total = min(7, len(exercises))
+    else:
+        total = min(10, len(exercises))
 
     exercises = sample(population=exercises, k=total)
     for exercise in exercises:
