@@ -11,6 +11,6 @@ RUN pip3 install -r requirements.txt
 # Expose correct port
 EXPOSE 5000
 ENV MYSQL_URI=db_container
-ENV MYSQL_ROOT_PASSWORD=asd123
+ENV MYSQL_ROOT_PASSWORD=$MYSQL_PW
 # Create an entrypoint
 ENTRYPOINT ["python3", "app.py"]
