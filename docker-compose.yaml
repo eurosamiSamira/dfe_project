@@ -12,7 +12,7 @@ services:
     image: mysql:latest
     container_name: db_container
     environment:
-      MYSQL_ROOT_PASSWORD: asd123
+      MYSQL_ROOT_PASSWORD: $MYSQL_PW
       MYSQL_DATABASE: flask-db
     networks:
       - trio
