@@ -7,6 +7,9 @@ services:
       - trio
     ports:
       - target: 5000
+    environment:
+      MYSQL_URI: db_container
+      MYSQL_ROOT_PASSWORD: $MYSQL_PW
 
   db_container:
     image: mysql:latest
