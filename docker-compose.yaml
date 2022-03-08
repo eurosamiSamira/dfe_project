@@ -9,14 +9,18 @@ services:
       - target: 5000
 
   db_container:
-    build: ./db
+    image: mysql:latest
     container_name: db_container
+    environment:
+      MYSQL_ROOT_PASSWORD: asd123
+      MYSQL_DATABASE: flask-db
     networks:
       - trio
     ports:
       - target: 3306
     volumes:
-      - datavolume:/var/lib/mysql
+      - /dfe_data:/var/lib/mysql
+      - ./db/populate.sql:/docker-entrypoint-initdb.d/populate.sql:ro
 
   nginx:
     image: nginx:latest
@@ -34,6 +38,3 @@ services:
 
 networks:
   trio: {}
-  
-volumes:
-  datavolume:
