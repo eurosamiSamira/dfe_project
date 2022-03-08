@@ -15,6 +15,8 @@ services:
       - trio
     ports:
       - target: 3306
+    volumes:
+      - datavolume:/var/lib/mysql
 
   nginx:
     image: nginx:latest
@@ -32,3 +34,6 @@ services:
 
 networks:
   trio: {}
+  
+volumes:
+  datavolume:
