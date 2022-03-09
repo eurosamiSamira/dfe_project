@@ -1,14 +1,15 @@
-version: "3"
+version: "3.8"
 services:
   flask_container:
     image: eurosami/flask_container
+    build: ./flask-app
     container_name: flask_container
     networks:
       - trio
     ports:
-      - target: 5000
+      - '5000:5000'
     environment:
-      MYSQL_URI: db_container
+      MYSQL_URI: dfe_db_container
       MYSQL_ROOT_PASSWORD: $MYSQL_PW
 
   db_container:
@@ -20,20 +21,18 @@ services:
     networks:
       - trio
     ports:
-      - target: 3306
+      - '3306:3306'
     volumes:
-      - /dfe_data:/var/lib/mysql
+      - dfe_data:/var/lib/mysql
       - ./db/populate.sql:/docker-entrypoint-initdb.d/populate.sql:ro
 
-  nginx:
+  nginx_container:
     image: nginx:latest
     container_name: nginx
     networks:
       - trio
     ports:
-      - target: 80
-        published: 80
-        protocol: tcp
+      - '80:80'
     volumes:
       - type: bind
         source: ./nginx/nginx.conf
@@ -41,3 +40,6 @@ services:
 
 networks:
   trio: {}
+
+volumes:
+  dfe_data:
