@@ -5,7 +5,7 @@ services:
     build: ./flask-app
     container_name: flask_container
     deploy:
-      replicas: 6
+      replicas: 1
     networks:
       - trio
     ports:
@@ -18,7 +18,7 @@ services:
     image: mysql:latest
     container_name: db_container
     deploy:
-      replicas: 6
+      replicas: 1
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_PW
       MYSQL_DATABASE: flask-db
@@ -34,7 +34,7 @@ services:
     image: nginx:latest
     container_name: nginx
     deploy:
-      replicas: 6
+      replicas: 1
     networks:
       - trio
     ports:
