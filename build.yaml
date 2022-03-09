@@ -1,0 +1,16 @@
+version: "3"
+services:
+  flask_container:
+    build: ./flask-app
+    container_name: flask_container
+    networks:
+      - trio
+    ports:
+      - target: 5000
+    environment:
+      MYSQL_URI: db_container
+      MYSQL_ROOT_PASSWORD: $MYSQL_PW
+      
+
+networks:
+  trio: {}
