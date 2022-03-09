@@ -1,7 +1,7 @@
 version: "3"
 services:
   flask_container:
-    build: ./flask-app
+    image: eurosami/flask_container
     container_name: flask_container
     networks:
       - trio
