@@ -66,7 +66,7 @@ Contents
 
 ### Project documentation required by QA
 
-## [Brief]{.underline}
+## Brief
 
 The brief provided for this project sets the following as its overall
 objective: \"To create a web application that integrates with a database
