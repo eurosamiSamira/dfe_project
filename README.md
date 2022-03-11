@@ -13,3 +13,4 @@ To utilise containers to host and deploy your application.
 To create a CI/CD pipeline that will automatically test, build and deploy the application.”
 This should be the culmination of all learning over the last few weeks. The main objective has been to create an application that utilises create, read, update and delete functions.
 
+![image](https://user-images.githubusercontent.com/81493790/157839367-662eca10-78b4-42e8-b1db-c24b08889d3f.png)
