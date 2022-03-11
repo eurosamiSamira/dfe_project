@@ -24,45 +24,9 @@ The use of Microsoft Azure, Docker, GitHub and Jenkins was a requirement
 from the specification for the final project by the course providers.
 
 Please see here how the app works by using the following link:\
-https://youtu.be/C7tSzjnbVG0![](media/image1.jpeg){width="1.8802307524059492in"
-height="1.057630139982502in"}
+[https://youtu.be/C7tSzjnbVG0](https://youtu.be/C7tSzjnbVG0)
 
 Blaster Gym
-
-Contents
-
-[Brief](#brief)
-
-[Additional Requirements]{.underline}
-
-[My Approach]{.underline}
-
--   [Architecture]{.underline}
-
-    -   [Database Structure]{.underline}
-
-    -   [CI Pipeline]{.underline}
-
--   [[Project
-    Tracking]{.underline}](https://github.com/htr-volker/individual-project-example#project-tracking)
-
--   [[Risk
-    Assessment]{.underline}](https://github.com/htr-volker/individual-project-example#risk-assessment)
-
--   [[Testing]{.underline}](https://github.com/htr-volker/individual-project-example#testing)
-
--   [[Front-End
-    Design]{.underline}](https://github.com/htr-volker/individual-project-example#front-end-design)
-
--   [[Known
-    Issues]{.underline}](https://github.com/htr-volker/individual-project-example#known-issues)
-
--   [[Future
-    Improvements]{.underline}](https://github.com/htr-volker/individual-project-example#future-improvements)
-
--   [[Authors]{.underline}](https://github.com/htr-volker/individual-project-example#authors)
-
-### 
 
 ### Project documentation required by QA
 
@@ -83,33 +47,23 @@ deploy the application."
 In addition to what has been set out in the brief, I am also required to
 include the following:
 
-Jira board
-
-User Stories/points
-
-Git and GitHub to commit all the builds and final coding of the
+- Jira board
+- User Stories/points
+- Git and GitHub to commit all the builds and final coding of the
 application
-
-A relational database, consisting of at least two tables that model a
+- A relational database, consisting of at least two tables that model a
 relationship
-
-Clear documentation of the design phase, app architecture and risk
+- Clear documentation of the design phase, app architecture and risk
 assessment
-
-A python-based functional application performing CRUD operations using
+- A python-based functional application performing CRUD operations using
 Flask and MySQL.
-
-Test for the application through Pytest, which will include automated
+- Test for the application through Pytest, which will include automated
 tests for validation of the application
-
-A front-end website, created using Flask
-
-Code integrated into a Version Control System which will be built
+- A front-end website, created using Flask
+- Code integrated into a Version Control System which will be built
 through a CI server and deployed to an Azure cloud-based virtual machine
-
-CI/CD via Jenkins
-
-Docker for configuration and orchestration for the use of separate VM's.
+- CI/CD via Jenkins
+- Docker for configuration and orchestration for the use of separate VM's.
 
 ### The app 
 
@@ -125,13 +79,9 @@ Before getting into development of the application, I have created the
 following:
 
 -   project tracking board
-
 -   development board using Scrum
-
 -   MoSCoW analysis
-
 -   risk analysis
-
 -   EDR diagram
 
 The first development Sprint should last one week, and I used story
@@ -171,7 +121,7 @@ list, where its functionality is tested.
 
 Sprint planning:
 
-[Epic 1: Create Blaster Gym App]{.underline}\
+Epic 1: Create Blaster Gym App\
 To have a fully functioning app at the end of the first week, that meet
 the CRUD functionality. Improvements will be made from week two.
 
@@ -215,9 +165,8 @@ Moscow analysis sprint 1 displayed on the board below:
 ![image](https://user-images.githubusercontent.com/81493790/157868745-ee79dade-f185-4822-859a-b0e278808420.png)
 
 
-[Epic 2: Phase 2 development\
-]{.underline}To fix any bugs and work on the interface and add users
-functionality.
+Epic 2: Phase 2 development\
+To fix any bugs and work on the interface and add users functionality.
 
 User stories sprint 2:
 
@@ -228,7 +177,7 @@ individual members\
 BLG-13: as a user, I want a nice interface, including the Master Gym
 logo on the website so I know I am using the right application.\
 BLG-14: as a user, I want all exercises marked as
-[']{dir="rtl"}incomplete[']{dir="rtl"} before starting a new session.
+'incomplete' before starting a new session.
 
 ![image](https://user-images.githubusercontent.com/81493790/157869083-070ec62b-2219-4283-a83a-ee32799b4cda.png)
 
