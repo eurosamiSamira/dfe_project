@@ -31,7 +31,7 @@ Blaster Gym
 
 Contents
 
-Brief
+[Brief](#brief)
 
 [Additional Requirements]{.underline}
 
